@@ -1,0 +1,4 @@
+term: Autoencoder
+definition: >
+  An Autoencoder is a neural network that, when trained on unlabelled data, learns
+  to map a high dimensional input space into a lower dimensional output space.
