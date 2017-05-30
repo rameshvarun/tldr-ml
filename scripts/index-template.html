@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Machine Learning Dictionary</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>TLDR Machine Learning</h1>
+    </div>
+
+    <div class="input-group">
+      <input id="search" type="text" class="form-control input-lg" placeholder="Search..." />
+      <span class="input-group-addon">
+            <i class="glyphicon glyphicon-search"></i>
+      </span>
+    </div>
+
+    {% for term in terms %}
+      <div class="term-entry" data-term-id="{{ term.id }}">
+        <h2>{{ term.term }}</h2>
+        <p>{{ term.definition }}<p>
+        {% if 'links' in term %}
+          <p>Links:
+            {% for link in term.links %}
+            <a href="{{ link[1] }}">{{ link[0] }}</a>
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        {% if 'aliases' in term %}
+          <p>Aliases:
+            {% for alias in term.aliases %}{{ alias}}{% endfor %}
+          </p>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <div hidden id="no-results"><center><h2>No Results Found</h2><a href="https://github.com/rameshvarun/tldr-ml">Consider Making a Pull Request!</a></center></div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.js" integrity="sha256-waqgnsy29ejZ5NqJaYcUX7fNqDVs5eW5lSW/iiccs4I=" crossorigin="anonymous"></script>
+
+  <!-- -->
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,30 +1,28 @@
 $(function() {
-  var template = $("#term-template");
   var search = $("#search");
+  var noresults = $("#no-results");
   $.getJSON("terms.json", function(terms) {
     for (var term of terms) {
-      var entry = template.clone();
-      term.entry = entry;
-
-      entry.find("#term-name").html(term.term);
-      entry.find("#term-definition").html(term.definition);
-      entry.addClass("term");
-      entry.show();
-      entry.insertAfter(template);
+      term.entry = $("[data-term-id='" + term.id + "']");
     }
 
     var fuse = new Fuse(terms, {
-      keys: ['term']
+      caseSensitive: false,
+      keys: ['term', 'aliases'],
+      shouldSort: true
     });
 
     search.on('input', function(value) {
       var val = search.val();
       if (val.trim() === "") {
-        $(".term").show();
+        $(".term-entry").show();
+        noresults.hide();
       } else {
-        $(".term").hide();
+        $(".term-entry").hide();
         var results = fuse.search(val);
         for (result of results) result.entry.show();
+        if (results.length == 0) noresults.show();
+        else noresults.hide();
       }
     })
   });

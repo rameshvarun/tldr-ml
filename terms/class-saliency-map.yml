@@ -1,0 +1,8 @@
+term: Class Saliency Map
+definition: >
+  A class saliency map is a visualization used to debug image classifiers. Given an input
+  image and a class, the map shows, for each pixel in the input image, how much does that pixel
+  contribute to the final class score. The class saliency map is computed by taking the gradient
+  of the the class score relative to the pixel values of the input image.
+links:
+  - ["Original Paper", "https://arxiv.org/abs/1312.6034"]
