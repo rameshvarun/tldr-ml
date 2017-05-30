@@ -1,0 +1,31 @@
+[{
+  "definition": "An Autoencoder is a neural network that, when trained on unlabelled data, learns to map a high dimensional input space into a lower dimensional output space.\n",
+  "term": "Autoencoder",
+  "id": "autoencoder"
+}, {
+  "term": "Dagger (Dataset Aggregation)",
+  "id": "dagger"
+}, {
+  "term": "Generative Adversarial Network",
+  "id": "generative-adversarial-network"
+}, {
+  "term": "Non-Stationary Policy",
+  "id": "nonstationary-policy"
+}, {
+  "term": "Policy",
+  "id": "policy"
+}, {
+  "term": "Regret",
+  "id": "regret"
+}, {
+  "definition": "A saliency map is used in visualizations to .\n",
+  "term": "Saliency Map",
+  "id": "saliency-map"
+}, {
+  "term": "Stationary Policy",
+  "id": "stationary-policy"
+}, {
+  "term": "Variational Autoencoder",
+  "aliases": ["VAE"],
+  "id": "variational-autoencoder"
+}]
