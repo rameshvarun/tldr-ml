@@ -13,6 +13,7 @@ for term_file in glob.iglob("terms/**/*.yml", recursive=True):
         doc = yaml.load(file)
     doc['id'] = id
     terms.append(doc)
+terms.sort(key=lambda t: t['term'])
 
 with open("terms.json", 'w') as out:
     out.write(json.dumps(terms))

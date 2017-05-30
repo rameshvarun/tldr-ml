@@ -30,7 +30,7 @@
 
     {% for term in terms %}
       <div class="term-entry" data-term-id="{{ term.id }}">
-        <h2>{{ term.term }}</h2>
+        <h2>{{ term.term }} <small><a href="https://varunramesh.net/tldr-ml/#{{ term.id }}" class='direct-link glyphicon glyphicon-link'></a></small></h2>
         <p>{{ term.definition }}<p>
         {% if 'links' in term %}
           <p>Links:

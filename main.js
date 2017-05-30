@@ -1,6 +1,20 @@
 $(function() {
   var search = $("#search");
   var noresults = $("#no-results");
+  var termentries = $(".term-entry");
+
+  function navigate() {
+    var hash = window.location.hash;
+    if (hash.length > 1 && hash[0] == "#") {
+      var id = hash.substring(1);
+      termentries.hide();
+      $("[data-term-id='" + id + "']").show();
+    }
+  }
+  navigate();
+
+  $(window).on('hashchange',function(){ navigate(); });
+
   $.getJSON("terms.json", function(terms) {
     for (var term of terms) {
       term.entry = $("[data-term-id='" + term.id + "']");
@@ -15,10 +29,10 @@ $(function() {
     search.on('input', function(value) {
       var val = search.val();
       if (val.trim() === "") {
-        $(".term-entry").show();
+        termentries.show();
         noresults.hide();
       } else {
-        $(".term-entry").hide();
+        termentries.hide();
         var results = fuse.search(val);
         for (result of results) result.entry.show();
         if (results.length == 0) noresults.show();
